@@ -1,0 +1,35 @@
+{
+	"name": "68publishers/package-installer",
+	"description": "Configurable repository downloader & installer for Nette Framework ",
+	"keywords": ["68publishers", "package-installer"],
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Tomáš Glawaty",
+			"email": "tomasglawaty@icloud.com"
+		}
+	],
+	"require": {
+		"php": "~7.1",
+		"nette/di": "~2.4",
+		"nette/utils": "~2.4",
+		"nette/http": "~2.4",
+		"nette/finder": "~2.4",
+		"symfony/console": "^4.0",
+		"symfony/process": "^4.0",
+		"psr/log": "~1.0"
+	},
+	"require-dev": {
+		"friendsofphp/php-cs-fixer": "^2.0",
+		"nette/tester": "^1.7",
+		"mockery/mockery": "^1.2"
+	},
+	"autoload": {
+		"classmap": ["src/"],
+		"files": []
+	},
+	"autoload-dev": {
+		"classmap": ["tests/"],
+		"files": []
+	}
+}
