@@ -52,7 +52,7 @@ final class RepositoryContainer implements \IteratorAggregate, \Countable
 			Helpers::concatPaths($this->distPath, $name)
 		);
 
-		if (NULl !== $branch) {
+		if (NULL !== $branch) {
 			$repository->setBranch($branch);
 		}
 	}
