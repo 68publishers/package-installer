@@ -15,12 +15,17 @@ final class GitClone implements IInstaller
 	/** @var \SixtyEightPublishers\PackageInstaller\Executor\IExecutor  */
 	private $executor;
 
+	/** @var int|NULL  */
+	private $depth;
+
 	/**
 	 * @param \SixtyEightPublishers\PackageInstaller\Executor\IExecutor $executor
+	 * @param int|NULL                                                  $depth
 	 */
-	public function __construct(SixtyEightPublishers\PackageInstaller\Executor\IExecutor $executor)
+	public function __construct(SixtyEightPublishers\PackageInstaller\Executor\IExecutor $executor, ?int $depth = 1)
 	{
 		$this->executor = $executor;
+		$this->depth = $depth;
 	}
 
 	/**
@@ -32,8 +37,9 @@ final class GitClone implements IInstaller
 	private function cloneRepository(SixtyEightPublishers\PackageInstaller\Repository $repository, Psr\Log\LoggerInterface $logger): void
 	{
 		$this->executor->execute(sprintf(
-			'git clone -b %s --single-branch %s %s',
+			'git clone -b %s --single-branch%s %s %s',
 			$repository->branch,
+			NULL === $this->depth ? '' : ' --depth ' . $this->depth,
 			$repository->repositoryUrl,
 			$repository->relativePath
 		), $logger);
